@@ -29,12 +29,17 @@ function displayTemperature(response) {
   let humidity = document.querySelector(".humidity");
   let wind = document.querySelector(".wind");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
   temperature.innerHTML = Math.round(response.data.temperature.current);
   city.innerHTML = response.data.city;
   description.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+  iconElement.setAttribute(
+    "src",
+    `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
 }
 
 let apiKey = "b0cd9e5049t9c84aa04obbbf3b123bbb";
